@@ -66,4 +66,19 @@ public class PartController {
 			return "error"; // Redirect to an error page or a confirmation page
 		}
 	}
+	
+	// Update an existing part
+    @GetMapping("updatePart.do")
+    public String updatePartForm(@RequestParam("partId") int id, Model model) {
+        Part part = partDAO.findById(id);
+        model.addAttribute("part", part);
+        return "part/updatePart"; // Path to the JSP form for updating a part
+    }
+
+    @PostMapping("updatePart.do")
+    public String updatePart(@RequestParam("partId") int id, Part part, Model model) {
+        part = partDAO.updatePart(id, part);
+        model.addAttribute("part", part);
+        return "part/show"; // Redirect to the part details page
+    }
 }
