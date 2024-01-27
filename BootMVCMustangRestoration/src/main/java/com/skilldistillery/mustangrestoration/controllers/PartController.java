@@ -41,16 +41,29 @@ public class PartController {
 		model.addAttribute("parts", parts);
 		return "home";
 	}
-	// Create a new part
-    @GetMapping("addPart.do")
-    public String addPartForm() {
-        return "part/addPart"; // Path to the JSP form for adding a new part
-    }
 
-    @PostMapping("addPart.do")
-    public String createPart(Part part, Model model) {
-        part = partDAO.addPart(part);
-        model.addAttribute("part", part);
-        return "part/show"; // Redirect to the part details page
-    }
+	// Create a new part
+	@GetMapping("addPart.do")
+	public String addPartForm() {
+		return "part/addPart"; // Path to the JSP form for adding a new part
+	}
+
+	@PostMapping("addPart.do")
+	public String createPart(Part part, Model model) {
+		part = partDAO.addPart(part);
+		model.addAttribute("part", part);
+		return "part/show"; // Redirect to the part details page
+	}
+
+	// Delete an existing part
+	@GetMapping("deletePart.do")
+	public String deletePart(@RequestParam("partId") int id, Model model) {
+		boolean deleted = partDAO.deletePart(id);
+		if (deleted) {
+			return "redirect:/"; // Redirect to the home page if deletion was successful
+		} else {
+			model.addAttribute("error", "Part deletion failed");
+			return "error"; // Redirect to an error page or a confirmation page
+		}
+	}
 }
