@@ -19,5 +19,10 @@
     	${part.id}. <a href="getPart.do?partId=${part.id}">${part.partName}</a><br/>
 	</c:forEach>
 	
+	<!--  Add Part button -->
+<div class="container mt-3">
+    <a href="addPart.do" class="btn btn-primary" role="button">Add Part</a>
+</div>
+	
 </body>
 </html>

@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -40,4 +41,16 @@ public class PartController {
 		model.addAttribute("parts", parts);
 		return "home";
 	}
+	// Create a new part
+    @GetMapping("addPart.do")
+    public String addPartForm() {
+        return "part/addPart"; // Path to the JSP form for adding a new part
+    }
+
+    @PostMapping("addPart.do")
+    public String createPart(Part part, Model model) {
+        part = partDAO.addPart(part);
+        model.addAttribute("part", part);
+        return "part/show"; // Redirect to the part details page
+    }
 }

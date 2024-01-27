@@ -28,4 +28,22 @@ public class PartDAOImpl implements PartDAO {
 		return em.createQuery("SELECT part FROM Part part", Part.class).getResultList();
 	}
 
+	@Override
+	public Part addPart(Part part) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public Part updatePart(int id, Part part) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public boolean deletePart(int id) {
+		// TODO Auto-generated method stub
+		return false;
+	}
+
 }
