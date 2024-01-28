@@ -46,7 +46,6 @@
                 <option>Waiting for parts</option>
             </select>
         </div>
-        <!-- Include other fields as necessary -->
         <button type="submit" class="btn btn-primary">Add Part</button>
     </form>
 </div>
