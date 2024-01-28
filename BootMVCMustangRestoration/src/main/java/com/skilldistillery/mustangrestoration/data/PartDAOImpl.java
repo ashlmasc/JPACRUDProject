@@ -42,8 +42,11 @@ public class PartDAOImpl implements PartDAO {
 
 	@Override
 	public boolean deletePart(int id) {
-		// TODO Auto-generated method stub
-		return false;
+		Part part = em.find(Part.class, id); // Find the part by ID
+	    if (part != null) {
+	        em.remove(part); // Remove the part entity
+	        return true;
+	    }
+	    return false;
 	}
-
 }
