@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartFile;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.skilldistillery.mustangrestoration.data.PartDAO;
 import com.skilldistillery.mustangrestoration.entities.Part;
@@ -47,7 +48,9 @@ public class PartController {
 	    Part part = partDAO.findById(id);
 
 	    if (part == null) {
-	        throw new IllegalArgumentException("Part with ID " + id + " not found");
+	        // Log statement for debugging
+	        System.out.println("No part found with ID: " + id);
+	        throw new IllegalArgumentException("Part with ID " + id + " not found.");
 	    }
 
 	    model.addAttribute("part", part);
@@ -131,5 +134,12 @@ public class PartController {
         part = partDAO.updatePart(id, part);
         model.addAttribute("part", part);
         return "part/show"; // Redirect to the part details page
+    }
+    
+    @GetMapping("/viewAllParts")
+    public String viewAllParts(Model model) {
+        List<Part> parts = partDAO.findAll(); 
+        model.addAttribute("parts", parts);
+        return "partsList"; // JSP page that displays the list
     }
 }
