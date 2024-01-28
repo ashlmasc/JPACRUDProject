@@ -30,8 +30,8 @@ public class PartDAOImpl implements PartDAO {
 
 	@Override
 	public Part addPart(Part part) {
-		// TODO Auto-generated method stub
-		return null;
+		em.persist(part); // Persist the part entity to the database
+	    return part; // The persisted part will now have a generated ID
 	}
 
 	@Override
