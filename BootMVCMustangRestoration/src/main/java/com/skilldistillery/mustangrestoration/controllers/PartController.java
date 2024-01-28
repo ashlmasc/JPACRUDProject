@@ -30,13 +30,28 @@ public class PartController {
 		return "home"; // if using a ViewResolver.
 	}
 
+	//old method that does work
+//	@GetMapping(path = "getPart.do", params = "partId")
+//	public String getPartById(@RequestParam("partId") int id, Model model) {
+//		String viewName = "part/show";
+//		Part part = partDAO.findById(id);
+//
+//		model.addAttribute("part", part);
+//		return viewName;
+//	}
+	
+	//new method with error handling
 	@GetMapping(path = "getPart.do", params = "partId")
 	public String getPartById(@RequestParam("partId") int id, Model model) {
-		String viewName = "part/show";
-		Part part = partDAO.findById(id);
+	    String viewName = "part/show";
+	    Part part = partDAO.findById(id);
 
-		model.addAttribute("part", part);
-		return viewName;
+	    if (part == null) {
+	        throw new IllegalArgumentException("Part with ID " + id + " not found");
+	    }
+
+	    model.addAttribute("part", part);
+	    return viewName;
 	}
 
 	@RequestMapping(path = "/", method = RequestMethod.GET)
