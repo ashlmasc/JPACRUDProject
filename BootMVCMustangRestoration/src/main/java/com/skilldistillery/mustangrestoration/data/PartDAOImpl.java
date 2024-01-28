@@ -35,9 +35,28 @@ public class PartDAOImpl implements PartDAO {
 	}
 
 	@Override
-	public Part updatePart(int id, Part part) {
-		// TODO Auto-generated method stub
-		return null;
+	public Part updatePart(int id, Part updatedPart) {
+		 // First, find the existing part in the database using the ID from the updatedPart object
+	    Part existingPart = em.find(Part.class, updatedPart.getId());
+	    
+	    if (existingPart != null) {
+	        // Update the existing part's fields with the values from the updatedPart object
+	        existingPart.setPartName(updatedPart.getPartName());
+	        existingPart.setCategory(updatedPart.getCategory());
+	        existingPart.setCondition(updatedPart.getCondition());
+	        existingPart.setPurchasePrice(updatedPart.getPurchasePrice());
+	        existingPart.setSupplierName(updatedPart.getSupplierName());
+	        existingPart.setDatePurchased(updatedPart.getDatePurchased());
+	        existingPart.setStatus(updatedPart.getStatus());
+	        existingPart.setInstallationNotes(updatedPart.getInstallationNotes());
+	        existingPart.setWarrantyInfo(updatedPart.getWarrantyInfo());
+	        existingPart.setVehicleSection(updatedPart.getVehicleSection());
+	        
+	        // Commit the transaction
+	        em.getTransaction().commit();
+	        
+	    }
+	    return existingPart; // Return the updated part
 	}
 
 	@Override
