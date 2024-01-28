@@ -39,6 +39,12 @@
             </ul>
         </div>
     </div>
+    
+    <!-- View All Parts Button -->
+    <div class="mt-3">
+    	
+    	<a href="viewAllParts.do" class="btn btn-secondary" role="button">View All Parts</a>
+    </div>
 
     <div class="row mt-4">
         <div class="col-md-12">

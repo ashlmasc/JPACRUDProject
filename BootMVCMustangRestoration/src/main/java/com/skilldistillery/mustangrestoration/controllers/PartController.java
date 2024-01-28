@@ -136,10 +136,10 @@ public class PartController {
         return "part/show"; // Redirect to the part details page
     }
     
-    @GetMapping("/viewAllParts")
+    @GetMapping("viewAllParts.do")
     public String viewAllParts(Model model) {
         List<Part> parts = partDAO.findAll(); 
         model.addAttribute("parts", parts);
-        return "partsList"; // JSP page that displays the list
+        return "part/partsList"; // JSP page that displays the list
     }
 }
