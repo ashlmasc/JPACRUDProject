@@ -1,15 +1,19 @@
 package com.skilldistillery.mustangrestoration.controllers;
 
+import java.io.File;
+import java.io.IOException;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.multipart.MultipartFile;
 
 import com.skilldistillery.mustangrestoration.data.PartDAO;
 import com.skilldistillery.mustangrestoration.entities.Part;
@@ -48,11 +52,43 @@ public class PartController {
 		return "part/addPart"; // Path to the JSP form for adding a new part
 	}
 
+	//old addPart without adding photo
+//	@PostMapping("addPart.do")
+//	public String createPart(Part part, Model model) {
+//		part = partDAO.addPart(part);
+//		model.addAttribute("part", part);
+//		return "part/show"; // Redirect to the part details page
+//	}
+	
+	//new addPart with adding photo
 	@PostMapping("addPart.do")
-	public String createPart(Part part, Model model) {
-		part = partDAO.addPart(part);
-		model.addAttribute("part", part);
-		return "part/show"; // Redirect to the part details page
+	public String createPart(@ModelAttribute Part part, @RequestParam("photo") MultipartFile photo, Model model) {
+	    if (!photo.isEmpty()) {
+	        // Call savePhoto method to save the photo and get the path
+	        String photoPath = savePhoto(photo); 
+	        part.setPhotoURL(photoPath); 
+	    }
+	    part = partDAO.addPart(part);
+	    model.addAttribute("part", part);
+	    return "part/show"; // Redirect to the part details page
+	}
+	
+	// Method to save photo to the file system and return the path
+	private String savePhoto(MultipartFile photo) {
+	    // Define the directory where to save the photo
+	    String directoryPath = "/path/to/photos/";
+	    // Create a unique filename for the photo, could use the original name or generate a new one
+	    String photoName = photo.getOriginalFilename(); 
+	    String photoPath = directoryPath + photoName;
+
+	    // Save the photo
+	    try {
+	        File file = new File(photoPath);
+	        photo.transferTo(file);
+	    } catch (IOException e) {
+	        e.printStackTrace();
+	    }
+	    return photoPath; // Return the saved photo path
 	}
 
 	// Delete an existing part
