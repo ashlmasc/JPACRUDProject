@@ -94,11 +94,11 @@ public class Part {
 		this.datePurchased = datePurchased;
 	}
 
-	public double getPurchasePrice() {
+	public Double getPurchasePrice() {
 		return purchasePrice;
 	}
 
-	public void setPurchasePrice(double purchasePrice) {
+	public void setPurchasePrice(Double purchasePrice) {
 		this.purchasePrice = purchasePrice;
 	}
 

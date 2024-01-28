@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="jakarta.tags.core" %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 
 <!DOCTYPE html>
 <html>
@@ -11,6 +12,7 @@
 </head>
 <body>
 <div class="container mt-5">
+
     <h1>Parts List</h1>
 
     <table class="table table-bordered table-hover mt-3">
@@ -31,24 +33,30 @@
             </tr>
         </thead>
         <tbody>
-            <c:forEach items="${part}" var="part">
-                <tr>
-                    <td>${part.id}</td>
-                    <td>${part.partName}</td>
-                    <td>${part.category}</td>
-                    <td>${part.condition}</td>
-                    <td>${part.status}</td>
-                    <td>$${part.purchasePrice}</td>
-                    <td>${part.supplierName}</td>
-                    <td>${part.datePurchased}</td>
-                    <td>${part.installationNotes}</td>
-                    <td>${part.warrantyInfo}</td>
-                    <td>${part.vehicleSection}</td>
-                    
-                </tr>
-            </c:forEach>
+       <c:forEach items="${allParts}" var="part">
+    <tr>
+    	<td>
+            <a href="updatePart.do?partId=${part.id}" class="btn btn-primary btn-sm" title="Click to update this part">${part.id}</a>
+        </td>
+        <td>${part.partName}</td>
+        <td>${part.category}</td>
+        <td>${part.condition}</td>
+        <td>${part.status}</td>
+        <td>
+        <fmt:formatNumber value="${part.purchasePrice}" type="currency" currencySymbol="$"/>
+        </td>
+        <td>${part.supplierName}</td>
+		<td>${part.datePurchased}</td>			
+		<td>${part.installationNotes}</td>			
+		<td>${part.warrantyInfo}</td>			
+		<td>${part.vehicleSection}</td>			
+ 	 </tr> 
+		</c:forEach>
+
         </tbody>
     </table>
+    
+   
 
     <!-- Button for CSV Download -->
 <!--     <a href="downloadPartsCsv" class="btn btn-primary">Download as CSV</a> -->

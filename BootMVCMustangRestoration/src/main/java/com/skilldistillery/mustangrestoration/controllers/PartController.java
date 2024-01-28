@@ -139,7 +139,7 @@ public class PartController {
     @GetMapping("viewAllParts.do")
     public String viewAllParts(Model model) {
         List<Part> parts = partDAO.findAll(); 
-        model.addAttribute("parts", parts);
+        model.addAttribute("allParts", parts);
         return "part/partsList"; // JSP page that displays the list
     }
 }
