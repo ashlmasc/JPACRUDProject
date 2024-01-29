@@ -41,15 +41,16 @@ public class PartController {
 //	}
 
 	// new method with error handling
-	@GetMapping(path = "getPart.do", params = "partId")
-	public String getPartById(@RequestParam("partId") int id, Model model) {
-		Part part = partDAO.findById(id);
-		if (part == null) {
-			model.addAttribute("errorMessage", "No part found with ID " + id);
-			return "error";
-		}
-		model.addAttribute("part", part);
-		return "show";
+	@GetMapping("getPart.do")
+	public String getPart(@RequestParam("partId") int id, Model model) {
+	    Part part = partDAO.findById(id);
+	    if (part == null) {
+	        model.addAttribute("errorMessage", "No part found with ID: " + id);
+	        return "error";
+	    } else {
+	        model.addAttribute("part", part);
+	        return "show"; 
+	    }
 	}
 
 	// Create a new part
