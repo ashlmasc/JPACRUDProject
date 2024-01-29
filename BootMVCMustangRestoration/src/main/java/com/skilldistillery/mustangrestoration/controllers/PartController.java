@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartFile;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.skilldistillery.mustangrestoration.data.PartDAO;
 import com.skilldistillery.mustangrestoration.entities.Part;
@@ -100,20 +101,30 @@ public class PartController {
 	    return photoPath;
 	}
 
-	// Delete an existing part
-	@GetMapping("deletePart.do")
+//	@GetMapping("deletePart.do")
+//	public String deletePart(@RequestParam("partId") int id, RedirectAttributes redirectAttributes)  {
+//	    try {
+//	        boolean deleted = partDAO.deletePart(id);
+//	        if (deleted) {
+//	            redirectAttributes.addFlashAttribute("message", "Part successfully deleted.");
+//	        } else {
+//	            redirectAttributes.addFlashAttribute("error", "Part deletion failed.");
+//	        }
+//	    } catch (Exception e) {
+//	        redirectAttributes.addFlashAttribute("error", "Error deleting part: " + e.getMessage());
+//	    }
+//	    return "redirect: deleteConfirmation"; // Redirect to the confirmation page
+//	}
+	
+	@PostMapping("deletePart.do")
 	public String deletePart(@RequestParam("partId") int id, Model model) {
-		try {
-			boolean deleted = partDAO.deletePart(id);
-			if (!deleted) {
-				model.addAttribute("error", "Part deletion failed");
-				return "error"; // Redirect to an error page
-			}
-		} catch (Exception e) {
-			model.addAttribute("errorMessage", "Error deleting part: " + e.getMessage());
-			return "error";
+		boolean isDeleted = partDAO.deletePart(id);
+		if (!isDeleted) {
+			model.addAttribute("message", "Part could not be deleted.");
+		} else {
+			model.addAttribute("message", "Part successfully deleted.");
 		}
-		return "redirect:/"; // Redirect to the home page on successful deletion
+		return "deletePart";
 	}
 
 	// Update an existing part

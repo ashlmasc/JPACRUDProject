@@ -53,7 +53,7 @@
 		<td>
             <form action="deletePart.do" method="post" onsubmit="return confirm('Are you sure you want to delete this part?');">
                 <input type="hidden" name="partId" value="${part.id}" />
-                <button type="submit" class="btn btn-danger btn-sm">Delete</button>
+                <button type="submit" class="btn btn-danger btn-sm" title="Click to delete this part">Delete</button>
             </form>
         </td>
 				

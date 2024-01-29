@@ -14,6 +14,11 @@
 <div class="container mt-5">
     <h1>Welcome to Ashley's 1972 Mustang Restoration Project</h1>
 
+	<!-- Image of 1972 Mustang -->
+	<div class="text-center">
+    		<img src="<c:url value='/resources/images/1972Mustang.jpg'/>" alt="1972 Mustang" class="img-fluid mb-3" style="max-height: 300px;">
+	</div>
+
     <div class="row mt-3">
         <div class="col-md-6">
             <h2>Find Part by ID</h2>

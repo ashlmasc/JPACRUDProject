@@ -36,8 +36,11 @@
             
             <!-- Update, Delete, and Home Buttons -->
             <a href="updatePart.do?partId=${part.id}" class="btn btn-primary mt-2">Update Part</a>
-            <a href="deletePart.do?partId=${part.id}" class="btn btn-danger mt-2" onclick="return confirm('Are you sure you want to delete this part?');">Delete Part</a>
             <a href="home.do" class="btn btn-secondary mt-2">Go Home</a>
+     		<form action="deletePart.do" method="post" onsubmit="return confirm('Are you sure you want to delete this part?');">
+    			<input type="hidden" name="partId" value="${part.id}">
+    			<input type="submit" value="Delete Part" class="btn btn-danger mt-2">
+			</form>
      
     </c:when>
     <c:otherwise>
