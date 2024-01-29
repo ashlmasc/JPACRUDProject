@@ -59,64 +59,54 @@ public class PartController {
 		return "addPart"; // Path to the JSP form for adding a new part
 	}
 
-	// old addPart without adding photo
-//	@PostMapping("addPart.do")
-//	public String createPart(Part part, Model model) {
-//		part = partDAO.addPart(part);
-//		model.addAttribute("part", part);
-//		return "part/show"; // Redirect to the part details page
-//	}
-
-	// new addPart with adding photo
+	// addPart without adding photo
 	@PostMapping("addPart.do")
-	public String createPart(@ModelAttribute Part part, @RequestParam("photo") MultipartFile photo, Model model) {
+	public String createPart(Part part, Model model) {
 	    try {
-	        if (!photo.isEmpty()) {
-	            String photoPath = savePhoto(photo); // Ensure this can throw IOException
-	            part.setPhotoURL(photoPath);
-	        }
 	        part = partDAO.addPart(part);
 	        model.addAttribute("part", part);
-	        return "show";
-	    } catch (IOException e) {
-	        model.addAttribute("errorMessage", "Error saving photo: " + e.getMessage());
-	        return "error"; // Assuming you have a part/error.jsp to handle errors
+	        return "show"; // Redirect to the part details page
 	    } catch (Exception e) {
-	        model.addAttribute("errorMessage", "An unexpected error has occurred: " + e.getMessage());
-	        return "error";
+	        model.addAttribute("errorMessage", "Error creating part: " + e.getMessage());
+	        return "error"; // Assuming you have an error view to handle errors
 	    }
 	}
+
+	// new addPart with adding photo...not ready yet
+//	@PostMapping("addPart.do")
+//	public String createPart(@ModelAttribute Part part, @RequestParam("photo") MultipartFile photo, Model model) {
+//	    try {
+//	        if (!photo.isEmpty()) {
+//	            String photoPath = savePhoto(photo); // Ensure this can throw IOException
+//	            part.setPhotoURL(photoPath);
+//	        }
+//	        part = partDAO.addPart(part);
+//	        model.addAttribute("part", part);
+//	        return "show";
+//	    } catch (IOException e) {
+//	        model.addAttribute("errorMessage", "Error saving photo: " + e.getMessage());
+//	        return "error"; // Assuming you have a part/error.jsp to handle errors
+//	    } catch (Exception e) {
+//	        model.addAttribute("errorMessage", "An unexpected error has occurred: " + e.getMessage());
+//	        return "error";
+//	    }
+//	}
 
 	// Method to save photo to the file system and return the path
-	private String savePhoto(MultipartFile photo) throws IOException {
-	    String directoryPath = "/path/to/photos/"; // Ensure this path exists and is writable
-	    String uniquePrefix = UUID.randomUUID().toString();
-	    String photoName = uniquePrefix + "_" + photo.getOriginalFilename();
-	    String photoPath = directoryPath + photoName;
-
-	    File file = new File(photoPath);
-	    if (!file.getParentFile().exists()) {
-	        file.getParentFile().mkdirs(); // Create the directory path if it doesn't exist
-	    }
-	    photo.transferTo(file); // This is where IOException might be thrown
-	    return photoPath;
-	}
-
-//	@GetMapping("deletePart.do")
-//	public String deletePart(@RequestParam("partId") int id, RedirectAttributes redirectAttributes)  {
-//	    try {
-//	        boolean deleted = partDAO.deletePart(id);
-//	        if (deleted) {
-//	            redirectAttributes.addFlashAttribute("message", "Part successfully deleted.");
-//	        } else {
-//	            redirectAttributes.addFlashAttribute("error", "Part deletion failed.");
-//	        }
-//	    } catch (Exception e) {
-//	        redirectAttributes.addFlashAttribute("error", "Error deleting part: " + e.getMessage());
+//	private String savePhoto(MultipartFile photo) throws IOException {
+//	    String directoryPath = "/path/to/photos/"; // Ensure this path exists and is writable
+//	    String uniquePrefix = UUID.randomUUID().toString();
+//	    String photoName = uniquePrefix + "_" + photo.getOriginalFilename();
+//	    String photoPath = directoryPath + photoName;
+//
+//	    File file = new File(photoPath);
+//	    if (!file.getParentFile().exists()) {
+//	        file.getParentFile().mkdirs(); // Create the directory path if it doesn't exist
 //	    }
-//	    return "redirect: deleteConfirmation"; // Redirect to the confirmation page
+//	    photo.transferTo(file); // This is where IOException might be thrown
+//	    return photoPath;
 //	}
-	
+
 	@PostMapping("deletePart.do")
 	public String deletePart(@RequestParam("partId") int id, Model model) {
 		boolean isDeleted = partDAO.deletePart(id);

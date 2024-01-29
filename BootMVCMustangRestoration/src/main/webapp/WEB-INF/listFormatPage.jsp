@@ -23,7 +23,7 @@
             <ul class="list-group">
                 <c:forEach items="${allParts}" var="part">
                     <li class="list-group-item">
-                        <div><strong>ID:</strong> ${part.id}</div>
+<%--                         <div><strong>ID:</strong> ${part.id}</div> --%>
                         <div><strong>Name:</strong> ${part.partName}</div>
                         <div><strong>Category:</strong> ${part.category}</div>
                         <div><strong>Condition:</strong> ${part.condition}</div>
@@ -34,7 +34,7 @@
                         <div><strong>Installation Notes:</strong> ${part.installationNotes}</div>
                         <div><strong>Status:</strong> ${part.status}</div>
                         <div><strong>Warranty Info:</strong> ${part.warrantyInfo}</div>
-                        <div><strong>Photo URL:</strong> ${part.photoURL}</div>
+<%--                         <div><strong>Photo URL:</strong> ${part.photoURL}</div> --%>
                         <div><strong>Vehicle Section:</strong> ${part.vehicleSection}</div>
                         <!-- Update and Delete buttons for each record -->
                         <div class="mt-2">

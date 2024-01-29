@@ -16,11 +16,13 @@
         <c:choose>
             <c:when test="${not empty part}">
                 <h1 class="display-4 text-center mb-4">${part.partName} Details</h1>
-                <div class="text-center mb-4">
-                    <c:if test="${not empty part.photoURL}">
-                        <img src="${part.photoURL}" alt="Part Photo" class="img-fluid" style="max-width: 300px; max-height: 300px;">
-                    </c:if>
-                </div>
+                
+                
+<!--                 <div class="text-center mb-4"> -->
+<%--                     <c:if test="${not empty part.photoURL}"> --%>
+<%--                         <img src="${part.photoURL}" alt="Part Photo" class="img-fluid" style="max-width: 300px; max-height: 300px;"> --%>
+<%--                     </c:if> --%>
+<!--                 </div> -->
 
                 <div class="mb-3"><strong>Category:</strong> ${part.category}</div>
                 <div class="mb-3"><strong>Condition:</strong> ${part.condition}</div>

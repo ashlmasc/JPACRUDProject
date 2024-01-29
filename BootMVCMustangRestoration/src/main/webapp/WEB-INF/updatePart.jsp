@@ -84,11 +84,10 @@
 		        <option value="Safety Systems" ${part.vehicleSection == 'Safety Systems' ? 'selected' : ''}>Safety Systems</option>
 		    </select>
 		</div>
-        <div class="form-group">
-            <label for="photo">Photo (leave blank to keep current photo)</label>
-            <input type="file" class="form-control-file" id="photo" name="photo">
-        </div>
-
+<!--         <div class="form-group"> -->
+<!--             <label for="photo">Photo (leave blank to keep current photo)</label> -->
+<!--             <input type="file" class="form-control-file" id="photo" name="photo"> -->
+<!--         </div> -->
         
          <!-- Cancel/Update Button -->
         <a href="home.do" class="btn btn-secondary" data-toggle="tooltip" title="Cancel and return to the homepage">Cancel</a>

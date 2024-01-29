@@ -58,8 +58,7 @@
     	<table class="table table-bordered table-hover mt-3">
         <thead class="thead-dark">
             <tr>
-                <th>ID</th>
-                <th>Photo</th>
+<!--                 <th>Photo</th> -->
                 <th>Name</th>
                 <th>Category</th>
                 <th>Condition</th>
@@ -77,12 +76,11 @@
         <tbody>
             <c:forEach items="${allParts}" var="part">
                 <tr>
-                    <td>${part.id}</td>
-                    <td>
-                        <c:if test="${not empty part.photoURL}">
-                            <img src="${part.photoURL}" alt="Part Photo" style="width: 100px; height: auto;">
-                        </c:if>
-                    </td>
+<!--                     <td> -->
+<%--                         <c:if test="${not empty part.photoURL}"> --%>
+<%--                             <img src="${part.photoURL}" alt="Part Photo" style="width: 100px; height: auto;"> --%>
+<%--                         </c:if> --%>
+<!--                     </td> -->
                     <td>${part.partName}</td>
                     <td>${part.category}</td>
                     <td>${part.condition}</td>
