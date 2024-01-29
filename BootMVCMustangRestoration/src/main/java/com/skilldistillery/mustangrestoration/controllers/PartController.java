@@ -158,7 +158,7 @@ public class PartController {
 	public String viewAllParts(Model model) {
 		List<Part> parts = partDAO.findAll();
 		model.addAttribute("allParts", parts);
-		return "partsList"; // JSP page that displays the list
+		return "tableFormatPage"; // JSP page that displays the list
 	}
 
 	@ExceptionHandler(Exception.class)
