@@ -1,20 +1,14 @@
 package com.skilldistillery.mustangrestoration.controllers;
 
-import java.io.File;
-import java.io.IOException;
 import java.util.List;
-import java.util.UUID;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.multipart.MultipartFile;
-import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.skilldistillery.mustangrestoration.data.PartDAO;
 import com.skilldistillery.mustangrestoration.entities.Part;
@@ -29,16 +23,6 @@ public class PartController {
 	public String index() {
 		return "home";
 	}
-
-	// old method that does work
-//	@GetMapping(path = "getPart.do", params = "partId")
-//	public String getPartById(@RequestParam("partId") int id, Model model) {
-//		String viewName = "part/show";
-//		Part part = partDAO.findById(id);
-//
-//		model.addAttribute("part", part);
-//		return viewName;
-//	}
 
 	// new method with error handling
 	@GetMapping("getPart.do")

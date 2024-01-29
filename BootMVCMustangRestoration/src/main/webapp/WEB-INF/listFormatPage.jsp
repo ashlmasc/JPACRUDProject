@@ -39,7 +39,10 @@
                         <!-- Update and Delete buttons for each record -->
                         <div class="mt-2">
                             <a href="updatePart.do?partId=${part.id}" class="btn btn-primary btn-sm">Update</a>
-                            <a href="deletePart.do?partId=${part.id}" class="btn btn-danger btn-sm" onclick="return confirm('Are you sure you want to delete this part?');">Delete</a>
+                        	<form action="deletePart.do" method="post" onsubmit="return confirm('Are you sure you want to delete this part?');" style="display: inline-block;">
+                            <input type="hidden" name="partId" value="${part.id}" />
+                            <button type="submit" class="btn btn-danger btn-sm">Delete</button>
+                        </form>
                         </div>
                     </li>
                 </c:forEach>

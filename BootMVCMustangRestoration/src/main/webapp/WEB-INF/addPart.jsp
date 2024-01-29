@@ -34,6 +34,12 @@
                 <option>Refurbished</option>
             </select>
         </div>
+        
+        <!-- Date Purchased -->
+        <div class="form-group">
+            <label for="datePurchased">Date Purchased</label>
+            <input type="date" class="form-control" id="datePurchased" name="datePurchased">
+        </div>
 
         <!-- Purchase Price -->
         <div class="form-group">
@@ -45,12 +51,6 @@
         <div class="form-group">
             <label for="supplierName">Supplier Name</label>
             <input type="text" class="form-control" id="supplierName" name="supplierName" placeholder="Enter supplier name">
-        </div>
-
-        <!-- Date Purchased -->
-        <div class="form-group">
-            <label for="datePurchased">Date Purchased</label>
-            <input type="date" class="form-control" id="datePurchased" name="datePurchased">
         </div>
 
         <!-- Date Installed -->
