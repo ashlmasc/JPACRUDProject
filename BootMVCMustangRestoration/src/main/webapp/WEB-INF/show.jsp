@@ -20,11 +20,12 @@
             <h2>${part.partName}</h2>
             <p><strong>Category:</strong> ${part.category}</p>
             <p><strong>Condition:</strong> ${part.condition}</p>
-            <p><strong>Status:</strong> ${part.status}</p>
+            <p><strong>Date Purchased:</strong> ${part.datePurchased}</p>
             <p><strong>Purchase Price:</strong> $${part.purchasePrice}</p>
             <p><strong>Supplier Name:</strong> ${part.supplierName}</p>
-            <p><strong>Date Purchased:</strong> <fmt:formatDate value="${part.datePurchased}" pattern="MM/dd/yyyy" /></p>
+            <p><strong>Date Installed:</strong> ${part.dateInstalled}</p>
             <p><strong>Installation Notes:</strong> ${part.installationNotes}</p>
+            <p><strong>Status:</strong> ${part.status}</p>
             <p><strong>Warranty Information:</strong> ${part.warrantyInfo}</p>
             <p><strong>Vehicle Section:</strong> ${part.vehicleSection}</p>
 

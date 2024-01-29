@@ -1,6 +1,6 @@
 package com.skilldistillery.mustangrestoration.entities;
 
-import java.time.LocalDateTime;
+import java.time.LocalDate;
 import java.util.Objects;
 
 import jakarta.persistence.Column;
@@ -22,10 +22,11 @@ public class Part {
 
 	private String category;
 
+	@Column(name = "`condition`")
 	private String condition;
 
 	@Column(name = "date_purchased")
-	private LocalDateTime datePurchased;
+	private LocalDate datePurchased;
 	
 	@Column(name = "purchase_price")
 	private Double purchasePrice;
@@ -34,7 +35,7 @@ public class Part {
 	private String supplierName;
 	
 	@Column(name = "date_installed")
-	private LocalDateTime dateInstalled;
+	private LocalDate dateInstalled;
 	
 	@Column(name = "installation_notes")
 	private String installationNotes;
@@ -86,11 +87,11 @@ public class Part {
 		this.condition = condition;
 	}
 
-	public LocalDateTime getDatePurchased() {
+	public LocalDate getDatePurchased() {
 		return datePurchased;
 	}
 
-	public void setDatePurchased(LocalDateTime datePurchased) {
+	public void setDatePurchased(LocalDate datePurchased) {
 		this.datePurchased = datePurchased;
 	}
 
@@ -110,11 +111,11 @@ public class Part {
 		this.supplierName = supplierName;
 	}
 
-	public LocalDateTime getDateInstalled() {
+	public LocalDate getDateInstalled() {
 		return dateInstalled;
 	}
 
-	public void setDateInstalled(LocalDateTime dateInstalled) {
+	public void setDateInstalled(LocalDate dateInstalled) {
 		this.dateInstalled = dateInstalled;
 	}
 

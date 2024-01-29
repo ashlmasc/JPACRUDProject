@@ -1,9 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
-<%@ page isErrorPage="true" %>
-<% exception.printStackTrace(new java.io.PrintWriter(response.getOutputStream())); %>
-
 
 <!DOCTYPE html>
 <html>
