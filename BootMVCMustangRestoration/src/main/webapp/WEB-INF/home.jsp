@@ -39,7 +39,7 @@
         <div class="col-md-8 text-center">
             <h2 class="h3 mb-3">View List of Parts</h2>
             <!-- Buttons for List and Table format -->
-            <a href="listFormatPage.do" class="btn btn-outline-info mb-2">List Format</a>
+            <a href="viewAllPartsList.do" class="btn btn-outline-info mb-2">List Format</a>
             <a href="viewAllParts.do" class="btn btn-outline-info mb-2">Table Format</a>
         </div>
     </div>

@@ -160,6 +160,14 @@ public class PartController {
 		model.addAttribute("allParts", parts);
 		return "tableFormatPage"; // JSP page that displays the list
 	}
+	
+	@GetMapping("viewAllPartsList.do")
+    public String listParts(Model model) {
+        List<Part> parts = partDAO.findAll();
+        model.addAttribute("allParts", parts);
+        // Return the view name for the list format page
+        return "listFormatPage";
+    }
 
 	@ExceptionHandler(Exception.class)
 	public String handleException(Exception e, Model model) {
