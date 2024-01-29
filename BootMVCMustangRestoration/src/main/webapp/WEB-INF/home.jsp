@@ -21,15 +21,12 @@
         <img src="<c:url value='/resources/images/1972Mustang.jpg'/>" alt="1972 Mustang" class="img-fluid" style="max-height: 400px;">
     </div>
 
-    <div class="row justify-content-center mb-4">
-        <div class="col-md-8">
-            <h2 class="h3 mb-3">Find Part by ID</h2>
+   <!-- Find Part by ID Form -->
+    <div class="row mb-4">
+        <div class="col-md-8 mx-auto">
             <form action="getPart.do" method="GET" class="form-inline justify-content-center">
-                <div class="form-group mx-sm-3 mb-2">
-                    <label for="partId" class="sr-only">Part ID:</label>
-                    <input type="text" class="form-control" id="partId" name="partId" placeholder="Enter Part ID" required>
-                </div>
-                <button type="submit" class="btn btn-outline-primary mb-2">Show Part</button>
+                <input type="text" class="form-control w-50" id="partId" name="partId" placeholder="Enter Part ID to Search for Part" required>
+                <button type="submit" class="btn btn-outline-primary ml-2">Show Part</button>
             </form>
         </div>
     </div>

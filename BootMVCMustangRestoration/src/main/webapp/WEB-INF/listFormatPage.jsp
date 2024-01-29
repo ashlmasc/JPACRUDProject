@@ -28,7 +28,7 @@
                         <div><strong>Category:</strong> ${part.category}</div>
                         <div><strong>Condition:</strong> ${part.condition}</div>
                         <div><strong>Date Purchased:</strong> ${part.datePurchased}</div>
-                        <div><strong>Purchase Price:</strong> $${part.purchasePrice}</div>
+                        <div><strong>Purchase Price:</strong><fmt:formatNumber value="${part.purchasePrice}" type="currency" currencySymbol="$" maxFractionDigits="2" minFractionDigits="2"/></div>
                         <div><strong>Supplier:</strong> ${part.supplierName}</div>
                         <div><strong>Date Installed:</strong> ${part.dateInstalled}</div>
                         <div><strong>Installation Notes:</strong> ${part.installationNotes}</div>

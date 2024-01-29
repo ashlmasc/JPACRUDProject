@@ -1,5 +1,6 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 
 <!DOCTYPE html>
 <html>
@@ -32,10 +33,13 @@
                 <option ${part.condition == 'Refurbished' ? 'selected' : ''}>Refurbished</option>
             </select>
         </div>
+        
         <div class="form-group">
-            <label for="purchasePrice">Purchase Price</label>
-            <input type="number" step="0.01" class="form-control" id="purchasePrice" name="purchasePrice" value="${part.purchasePrice}" required>
-        </div>
+    		<label for="purchasePrice">Purchase Price</label>
+    		<fmt:formatNumber value="${part.purchasePrice}" var="formattedPrice" maxFractionDigits="2" minFractionDigits="2"/>
+    		<input type="number" step="0.01" class="form-control" id="purchasePrice" name="purchasePrice" value="${formattedPrice}" required>
+		</div>
+        
         <div class="form-group">
             <label for="supplierName">Supplier Name</label>
             <input type="text" class="form-control" id="supplierName" name="supplierName" value="${part.supplierName}">

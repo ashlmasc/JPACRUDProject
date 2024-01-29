@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="jakarta.tags.core" %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 
 <!DOCTYPE html>
 <html>
@@ -85,7 +86,7 @@
                     <td>${part.category}</td>
                     <td>${part.condition}</td>
                     <td>${part.datePurchased}</td>
-                    <td>$${part.purchasePrice}</td>
+                    <td><fmt:formatNumber value="${part.purchasePrice}" type="currency" currencySymbol="$" maxFractionDigits="2" minFractionDigits="2"/></td>
                     <td>${part.supplierName}</td>
                     <td>${part.dateInstalled}</td>
                     <td>${part.installationNotes}</td>
