@@ -49,7 +49,14 @@
 		<td>${part.datePurchased}</td>			
 		<td>${part.installationNotes}</td>			
 		<td>${part.warrantyInfo}</td>			
-		<td>${part.vehicleSection}</td>			
+		<td>${part.vehicleSection}</td>	
+		<td>
+            <form action="deletePart.do" method="post" onsubmit="return confirm('Are you sure you want to delete this part?');">
+                <input type="hidden" name="partId" value="${part.id}" />
+                <button type="submit" class="btn btn-danger btn-sm">Delete</button>
+            </form>
+        </td>
+				
  	 </tr> 
 		</c:forEach>
 
