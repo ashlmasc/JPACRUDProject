@@ -168,7 +168,7 @@ public class PartController {
         // Return the view name for the list format page
         return "listFormatPage";
     }
-
+	
 	@ExceptionHandler(Exception.class)
 	public String handleException(Exception e, Model model) {
 	    model.addAttribute("errorMessage", e.getMessage());
